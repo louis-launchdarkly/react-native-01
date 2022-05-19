@@ -65,15 +65,18 @@ class App extends Component {
     let result = this.configure().then(
       this.client.stringVariation('string-flag', 'hey').then(value => {
         console.log(value);
-        this.setState = {output: JSON.stringify(value)};
+        this.setState({output: JSON.stringify(value)});
       }),
     );
     return await result;
   }
 
   render() {
-    this.getFlag();
     return <Text>FlagValue "{this.state.output}"</Text>;
+  }
+
+  componentDidMount() {
+    this.getFlag();
   }
 }
 
